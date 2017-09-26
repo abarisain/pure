@@ -148,7 +148,7 @@ prompt_pure_preprompt_render() {
 		$cleaned_ps1
 	)
 
-	PROMPT="${(j..)ps1}"
+	PROMPT="${(j..)ps1} "
 
 	# Expand the prompt for future comparision.
 	local expanded_prompt
