@@ -154,9 +154,6 @@ prompt_pure_preprompt_render() {
 	local expanded_prompt
 	expanded_prompt="${(S%%)PROMPT}"
 
-	prompt_newline='%666v'
-	PROMPT=" $PROMPT"
-
 	if [[ $1 != precmd ]] && [[ $prompt_pure_last_prompt != $expanded_prompt ]]; then
 		# Redraw the prompt.
 		zle && zle .reset-prompt
@@ -443,7 +440,7 @@ prompt_pure_setup() {
 
 	if [[ -z $prompt_newline ]]; then
 		# This variable needs to be set, usually set by promptinit.
-		typeset -g prompt_newline=$'\n%{\r%}'
+		typeset -g prompt_newline=$'%666v'
 	fi
 
 	zmodload zsh/datetime
