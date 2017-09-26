@@ -144,11 +144,12 @@ prompt_pure_preprompt_render() {
 	ps1=(
 		$prompt_newline           # Initial newline, for spaciousness.
 		${(j. .)preprompt_parts}  # Join parts, space separated.
+		' '			  # Spacing
 		$prompt_newline           # Separate preprompt and prompt.
 		$cleaned_ps1
 	)
 
-	PROMPT="${(j..)ps1} "
+	PROMPT="${(j..)ps1}"
 
 	# Expand the prompt for future comparision.
 	local expanded_prompt
