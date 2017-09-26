@@ -142,7 +142,9 @@ prompt_pure_preprompt_render() {
 	# Construct the new prompt with a clean preprompt.
 	local -ah ps1
 	ps1=(
+		$prompt_newline           # Initial newline, for spaciousness.
 		${(j. .)preprompt_parts}  # Join parts, space separated.
+		$prompt_newline           # Separate preprompt and prompt.
 		$cleaned_ps1
 	)
 
@@ -151,6 +153,9 @@ prompt_pure_preprompt_render() {
 	# Expand the prompt for future comparision.
 	local expanded_prompt
 	expanded_prompt="${(S%%)PROMPT}"
+
+	prompt_newline='%666v'
+	PROMPT=" $PROMPT"
 
 	if [[ $1 != precmd ]] && [[ $prompt_pure_last_prompt != $expanded_prompt ]]; then
 		# Redraw the prompt.
